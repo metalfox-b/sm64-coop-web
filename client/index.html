@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"><meta name="theme-color" content="#152d39"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg"><link rel="stylesheet" href="./activity.css"><title>SM64 Coop</title></head>
+<body>
+  <canvas id="canvas" tabindex="0" aria-label="Super Mario 64 multiplayer game"></canvas>
+  <main id="launcher" class="panel">
+    <p class="eyebrow">A WORLD TO SHARE</p><h1>SM64<span>COOP</span></h1>
+    <p id="intro">Meet at the castle. Create a world or join your friends.</p>
+    <section id="rom-panel" aria-label="Your local ROM">
+      <label class="check"><input id="rom-lawful" type="checkbox">I lawfully obtained my own ROM.</label>
+      <label>Super Mario 64 USA ROM<input id="rom-file" type="file" accept=".z64"></label>
+      <p id="rom-status" role="status">Checking this browser’s saved ROM…</p>
+      <button id="rom-forget" type="button" class="secondary" hidden>Remove saved ROM</button>
+    </section>
+    <form id="login-form" hidden><label>Private server password<input id="password" type="password" autocomplete="current-password" required></label><button type="submit">Sign in</button></form>
+    <form id="lobby-form" hidden>
+      <label>Your name<input id="name" autocomplete="nickname" maxlength="32" value="Player" required></label>
+      <div id="browser-choices"><div class="tabs"><button id="create-tab" type="button" class="selected">Create a world</button><button id="join-tab" type="button">Join a lobby</button></div>
+      <label id="world-label">World name<input id="world-name" maxlength="32" value="Castle courtyard"></label><label id="code-label" hidden>Lobby code or invite link<input id="code" autocomplete="off" placeholder="Paste your invite"></label></div>
+      <button id="play" type="submit">Enter the castle <span aria-hidden="true">→</span></button>
+    </form>
+    <p id="status" role="status">Connecting…</p><progress id="progress" hidden></progress>
+    <p class="footnote">Shared stars. Free camera. Bring your friends.</p>
+  </main>
+  <div id="game-bar" hidden><span id="lobby-title"></span><span id="players"></span><span id="save-status" aria-live="polite"></span><button id="invite" title="Copy a browser invite">Invite</button><button id="menu-button" aria-label="Open game menu">Menu</button><button id="settings-button" aria-label="Open settings">Settings</button></div>
+  <section id="star-menu" hidden aria-label="Choose a star"><h2>Choose a star</h2><div id="star-options"></div></section>
+  <div id="portrait-hud" aria-label="Game status"><span id="hud-lives"></span><span id="hud-coins"></span><span id="hud-stars"></span><span id="hud-health"></span><span id="hud-timer"></span><span id="hud-cap"></span></div>
+  <div id="touch-controls" hidden aria-label="Gesture controls"><div id="move-stick" hidden><span id="stick-knob"></span></div><button id="touch-center" data-role="center" aria-label="Center camera">↻</button><button id="touch-crouch" data-role="crouch" aria-label="Hold to crouch; swipe up for crouch jump">Z<span>↑ jump</span></button><p id="gesture-hint">Left thumb · move<br>Right thumb · look<br>↑ jump · tap attack · ↓ ground pound</p></div>
+  <dialog id="settings"><form method="dialog"><div class="dialog-title"><h2>Make yourself comfortable</h2><button aria-label="Close settings" value="resume">×</button></div><label>Camera sensitivity<input id="sensitivity" type="range" min="0.25" max="2" step="0.05" value="1"></label><label class="check"><input id="invert-y" type="checkbox">Invert vertical camera</label><label>Graphics<select id="quality"><option value="auto">Automatic</option><option value="performance">Performance · 360p</option><option value="balanced">Balanced · 480p</option><option value="high">High · 720p</option></select></label><label class="check"><input id="mute" type="checkbox">Mute game audio</label><p class="controls-help">Move: WASD / left stick<br>Jump: Space / A · Attack: E / B<br>Crouch: Shift / trigger · Center camera: C / LB<br>Camera: mouse / right stick<br>Touch: move anywhere on the left; horizontal look on the right.<br>Right swipe ↑ jump · tap attack · airborne swipe ↓ ground pound.<br>Hold Z to crouch. Swipe ↑ from Z while running to long jump.<br>Tap menu items directly. Esc opens the game menu.</p><p id="metrics"></p><button value="resume">Resume game</button><button id="leave" type="button" class="secondary">Leave lobby</button></form></dialog>
+  <div id="notice" role="status" hidden></div>
+  <script type="module" src="./activity.js"></script>
+</body></html>

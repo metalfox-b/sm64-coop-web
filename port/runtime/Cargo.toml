@@ -1,0 +1,16 @@
+[workspace]
+[package]
+name = "sm64-original-runtime"
+version = "0.1.0"
+edition = "2024"
+publish = false
+[lib]
+crate-type = ["staticlib"]
+[dependencies]
+sm64-native-adapter = { path = "../../rust/native-adapter" }
+physics = { path = "../../private/source-port/physics" }
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

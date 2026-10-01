@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/coop-deluxe/sm64coopdx",
+  "version": "v1.5.1",
+  "archive": "https://codeload.github.com/coop-deluxe/sm64coopdx/tar.gz/refs/tags/v1.5.1",
+  "sha256": "1759bdeeed5fae13cc4048f75a07c4fe3b73dcd1a7d2d82ffddb27354557a23a",
+  "lua": { "archive": "https://www.lua.org/ftp/lua-5.3.6.tar.gz", "sha256": "fc5fd69bb8736323f026672b1b7235da613d7177e72558893a0bdcd320466d60" },
+  "romSha256": "17ce077343c6133f8c9f2d6d6d9a4ab62c8cd2aa57c40aea1f490b4c8bb21d91"
+}

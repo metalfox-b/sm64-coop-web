@@ -1,0 +1,13 @@
+import { writeFile } from 'node:fs/promises';
+import { randomBytes } from 'node:crypto';
+import { resolve } from 'node:path';
+import { hashPassword } from '../server/browser-auth.mjs';
+const [origin,destination]=process.argv.slice(2);
+if(!origin||!destination)throw new Error('Usage: node scripts/configure-browser.mjs HTTPS_ORIGIN PRIVATE_ENV_FILE < PASSWORD_FILE');
+const url=new URL(origin);if(url.origin!==origin||!['https:','http:'].includes(url.protocol)||url.username||url.password)throw new Error('Use an exact HTTPS origin (HTTP is for localhost).');
+if(url.protocol==='http:'&&!['localhost','127.0.0.1'].includes(url.hostname))throw new Error('Public browser access requires HTTPS');
+const output=resolve(destination);if(output.startsWith(resolve('dist')+'/'))throw new Error('Keep credentials outside dist');
+let password='';for await(const chunk of process.stdin)password+=chunk.toString();
+password=password.replace(/\r?\n$/,'');
+await writeFile(output,`BROWSER_ORIGIN=${origin}\nBROWSER_PASSWORD_HASH=${await hashPassword(password)}\nBROWSER_SESSION_SECRET=${randomBytes(32).toString('base64url')}\n`,{mode:0o600,flag:'wx'});
+console.log(`Wrote private browser configuration to ${output}.`);

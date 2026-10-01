@@ -1,0 +1,26 @@
+{
+  "name": "sm64-coop-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "fetch:engine": "node scripts/fetch-engine.mjs",
+    "build:engine": "node scripts/build-engine.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "node --env-file-if-exists=.env server/main.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:browser": "node scripts/test-browser.mjs",
+    "configure:browser": "node scripts/configure-browser.mjs"
+  },
+  "dependencies": {
+    "@discord/embedded-app-sdk": "2.4.0",
+    "ws": "8.22.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "playwright": "1.63.0"
+  }
+}
