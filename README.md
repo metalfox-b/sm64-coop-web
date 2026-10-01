@@ -68,3 +68,7 @@ The browser fixture verifies missing-ROM blocking, per-profile import/cache pers
 ## Source attribution
 
 Engine sources are fetched separately from [sm64coopdx v1.5.1](https://github.com/coop-deluxe/sm64coopdx/tree/v1.5.1), with the pinned archive hash in `engine.lock.json`. Lua and other dependencies retain their own notices and terms. Nintendo game content is not included. This project is not affiliated with Nintendo.
+
+## License
+
+This repository’s original code is licensed under the [MIT License](LICENSE). Separately fetched upstream engine code and other dependencies retain their own terms; this license grants no rights to Nintendo game content.

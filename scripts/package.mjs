@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 const source=process.env.SM64_ENGINE_ROOT||'private/engine',out=resolve('private/release');
 const runtime=JSON.parse(await readFile('dist/runtime.json'));
 await rm(out,{recursive:true,force:true});await mkdir(out,{recursive:true});
-for(const name of ['dist','server','shared','package.json','node_modules/ws'])await cp(name,resolve(out,name),{recursive:true});
+for(const name of ['dist','server','shared','LICENSE','package.json','node_modules/ws'])await cp(name,resolve(out,name),{recursive:true});
 await mkdir(resolve(out,'engine'));
 for(const name of ['sm64.wasm','shell.data']) {
   const bytes=await readFile(source+'/'+name);
